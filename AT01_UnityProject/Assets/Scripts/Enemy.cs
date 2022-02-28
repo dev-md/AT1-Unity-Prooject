@@ -32,6 +32,12 @@ public class Enemy : MonoBehaviour
                     transform.Translate(currentDir * speed * Time.deltaTime);
                 }
                 //Implement path finding here
+                else
+                {
+                    //currentNode = GameManager.Instance.Nodes[5];
+                    currentDir = currentNode.transform.position - transform.position;
+                    currentDir = currentDir.normalized;
+                }
             }
             else
             {
@@ -68,4 +74,50 @@ public class Enemy : MonoBehaviour
     }
 
     //Implement DFS algorithm method here
+
+
 }
+
+
+//    public Node rootNode;
+//    public Node targetPoint;
+
+//    private void Start()
+//    {
+//        int stepCount = DFS(targetPoint);
+//        if (stepCount > -1)
+//        {
+//            Debug.Log(targetPoint.name + " found in " + stepCount);
+//        }
+//        else
+//        {
+//            Debug.Log(targetPoint.name + "not found");
+//        }
+//    }
+//    public int DFS(Node targetNode)
+//    {
+//        Stack stack = new Stack();
+//        List<Node> visitedlist = new List<Node>();
+//        visitedlist.Add(rootNode);
+//        stack.Push(rootNode);
+
+//        while (stack.Count > 0)
+//        {
+//            Node node = (Node)stack.Pop();
+//            //visitedlist.Add(node);
+//            Debug.Log("Checking " + node.name);
+//            foreach (Node child in node.children)
+//            {
+//                if (visitedlist.Contains(child) == false) //&& stack.Contains(child) == false)
+//                {
+//                    Debug.Log("Checking " + node.name + " and child " + child.name);
+//                    if (child == targetNode)
+//                    {
+//                        return targetNode;
+//                    }
+//                    visitedlist.Add(child);
+//                    stack.Push(child);
+//                }
+//            }
+//        }
+//        return -1;
