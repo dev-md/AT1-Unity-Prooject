@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 268955032}
   - component: {fileID: 268955033}
   - component: {fileID: 268955034}
+  - component: {fileID: 268955035}
   m_Layer: 0
   m_Name: Node (1)
   m_TagString: Untagged
@@ -320,6 +321,19 @@ MonoBehaviour:
   - {fileID: 1389258055}
   - {fileID: 1622374381}
   - {fileID: 700098638}
+--- !u!135 &268955035
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268955031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &355137584
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +345,7 @@ GameObject:
   - component: {fileID: 355137585}
   - component: {fileID: 355137586}
   - component: {fileID: 355137587}
+  - component: {fileID: 355137588}
   m_Layer: 0
   m_Name: Node (9)
   m_TagString: Untagged
@@ -420,6 +435,19 @@ MonoBehaviour:
   children:
   - {fileID: 1622374381}
   - {fileID: 1389258055}
+--- !u!135 &355137588
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355137584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &700098635
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +459,7 @@ GameObject:
   - component: {fileID: 700098636}
   - component: {fileID: 700098637}
   - component: {fileID: 700098638}
+  - component: {fileID: 700098639}
   m_Layer: 0
   m_Name: Node (4)
   m_TagString: Untagged
@@ -521,6 +550,19 @@ MonoBehaviour:
   children:
   - {fileID: 1853686109}
   - {fileID: 1504686828}
+--- !u!135 &700098639
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700098635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +707,7 @@ GameObject:
   - component: {fileID: 836551680}
   - component: {fileID: 836551681}
   - component: {fileID: 836551682}
+  - component: {fileID: 836551683}
   m_Layer: 0
   m_Name: Node (7)
   m_TagString: Untagged
@@ -753,6 +796,19 @@ MonoBehaviour:
   - {fileID: 1622374381}
   - {fileID: 1389258055}
   children: []
+--- !u!135 &836551683
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836551679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1180,7 @@ GameObject:
   - component: {fileID: 1220234474}
   - component: {fileID: 1220234473}
   - component: {fileID: 1220234478}
+  - component: {fileID: 1220234479}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1234,8 +1291,24 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1220234479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220234472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0598469efdf71994fb8dd489a094a3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKeys: 1101000077000000
+  downKeys: 1201000073000000
+  leftKeys: 1401000061000000
+  rightKeys: 1301000064000000
 --- !u!1 &1278480582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1320,7 @@ GameObject:
   - component: {fileID: 1278480583}
   - component: {fileID: 1278480584}
   - component: {fileID: 1278480585}
+  - component: {fileID: 1278480586}
   m_Layer: 0
   m_Name: RootNode
   m_TagString: Untagged
@@ -1336,6 +1410,19 @@ MonoBehaviour:
   - {fileID: 268955034}
   - {fileID: 355137587}
   - {fileID: 1573181747}
+--- !u!135 &1278480586
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278480582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1389258052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1434,7 @@ GameObject:
   - component: {fileID: 1389258053}
   - component: {fileID: 1389258054}
   - component: {fileID: 1389258055}
+  - component: {fileID: 1389258056}
   m_Layer: 0
   m_Name: Node (2)
   m_TagString: Untagged
@@ -1439,6 +1527,19 @@ MonoBehaviour:
   - {fileID: 1504686828}
   - {fileID: 836551682}
   - {fileID: 1853686109}
+--- !u!135 &1389258056
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389258052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1504686825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1551,7 @@ GameObject:
   - component: {fileID: 1504686826}
   - component: {fileID: 1504686827}
   - component: {fileID: 1504686828}
+  - component: {fileID: 1504686829}
   m_Layer: 0
   m_Name: Node (3)
   m_TagString: Untagged
@@ -1539,6 +1641,19 @@ MonoBehaviour:
   - {fileID: 1622374381}
   - {fileID: 700098638}
   children: []
+--- !u!135 &1504686829
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504686825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1573181744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1665,7 @@ GameObject:
   - component: {fileID: 1573181745}
   - component: {fileID: 1573181746}
   - component: {fileID: 1573181747}
+  - component: {fileID: 1573181748}
   m_Layer: 0
   m_Name: Node (8)
   m_TagString: Untagged
@@ -1639,6 +1755,19 @@ MonoBehaviour:
   children:
   - {fileID: 700098638}
   - {fileID: 1389258055}
+--- !u!135 &1573181748
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573181744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1588401708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1834,7 @@ GameObject:
   - component: {fileID: 1622374379}
   - component: {fileID: 1622374380}
   - component: {fileID: 1622374381}
+  - component: {fileID: 1622374382}
   m_Layer: 0
   m_Name: Node (5)
   m_TagString: Untagged
@@ -1795,6 +1925,19 @@ MonoBehaviour:
   children:
   - {fileID: 836551682}
   - {fileID: 1504686828}
+--- !u!135 &1622374382
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622374378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1853686106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1949,7 @@ GameObject:
   - component: {fileID: 1853686107}
   - component: {fileID: 1853686108}
   - component: {fileID: 1853686109}
+  - component: {fileID: 1853686110}
   m_Layer: 0
   m_Name: Node (6)
   m_TagString: Untagged
@@ -1894,3 +2038,16 @@ MonoBehaviour:
   - {fileID: 700098638}
   - {fileID: 1389258055}
   children: []
+--- !u!135 &1853686110
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853686106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
