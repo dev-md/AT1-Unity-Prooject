@@ -85,8 +85,8 @@ public class Enemy : MonoBehaviour
     {
         Stack stack = new Stack();
         List<Node> visitedlist = new List<Node>();
-        visitedlist.Add(currentNode);
-        stack.Push(currentNode);
+        visitedlist.Add(GameManager.Instance.Nodes[0]);
+        stack.Push(GameManager.Instance.Nodes[0]);
 
         while (stack.Count > 0)
         {

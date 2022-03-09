@@ -55,15 +55,8 @@ public class Player : MonoBehaviour
             else
             {
                 moving = false;
-
-                CurrentNode.tag = "Untagged";
                 CurrentNode = TargetNode;
             }
-        }
-
-        if(CurrentNode.tag != "Player_Node")
-        {
-            CurrentNode.tag = "Player_Node";
         }
     }
 
@@ -79,6 +72,8 @@ public class Player : MonoBehaviour
         if (moving == false)
         {
             TargetNode = node;
+            CurrentNode.tag = "Untagged";
+            TargetNode.tag = "Player_Node";
             currentDir = TargetNode.transform.position - transform.position;
             currentDir = currentDir.normalized;
             moving = true;
