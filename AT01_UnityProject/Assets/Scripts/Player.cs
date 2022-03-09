@@ -17,11 +17,24 @@ public class Player : MonoBehaviour
 
     private string moveDirNode;
 
+    public Button uButton;
+    public Button dButton;
+    public Button lButton;
+    public Button rButton;
+    Dictionary<string, Button> listButtons = new Dictionary<string, Button>();
+
     // Start is called before the first frame update
     void Start()
     {
         moveDirNode = null;
+
+        listButtons.Add("u", uButton);
+        listButtons.Add("d", dButton);
+        listButtons.Add("l", lButton);
+        listButtons.Add("r", rButton);
+
         InputChecker.ConfrimDirInput += InputChecker_ConfrimDirInput;
+
         foreach (Node node in GameManager.Instance.Nodes)
         {
             if (node.Parents.Length > 2 && node.Children.Length == 0)
@@ -41,13 +54,23 @@ public class Player : MonoBehaviour
             if (moveDirNode != null)
             {
                 //Debug.Log("HIT");
+                ChangeButtonColour(listButtons[moveDirNode], Color.green);
                 MoveToNode(FindClosest());
                 moveDirNode = null;
             }
         }
         else
         {
-            moveDirNode = null;
+
+            if (moveDirNode != null)
+            {
+                if(listButtons[moveDirNode].GetComponent<Image>().color != Color.green)
+                {
+                    ChangeButtonColour(listButtons[moveDirNode], Color.red);
+                }
+                moveDirNode = null;
+            }
+
             if (Vector3.Distance(transform.position, TargetNode.transform.position) > 0.25f)
             {
                 transform.Translate(currentDir * speed * Time.deltaTime);
@@ -61,6 +84,18 @@ public class Player : MonoBehaviour
     }
 
     //Implement mouse interaction method here
+    private void ChangeButtonColour(Button button, Color colour)
+    {
+        button.GetComponent<Image>().color = colour;
+        if(colour == Color.green) StartCoroutine(ColourTimer(button, 2.4f));
+        if(colour == Color.red) StartCoroutine(ColourTimer(button, 0.5f));
+    }
+
+    IEnumerator ColourTimer(Button button, float time)
+    {
+        yield return new WaitForSeconds(time);
+        button.GetComponent<Image>().color = Color.white;
+    }
 
 
     /// <summary>

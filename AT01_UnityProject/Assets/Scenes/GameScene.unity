@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 459405684}
   - component: {fileID: 459405683}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 970043597}
   - component: {fileID: 970043596}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1108,7 +1108,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1481,6 +1481,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  uButton: {fileID: 970043596}
+  dButton: {fileID: 459405683}
+  lButton: {fileID: 1703650379}
+  rButton: {fileID: 1521330460}
 --- !u!135 &1220234474
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1589,6 +1593,10 @@ MonoBehaviour:
   downKeys: 1201000073000000
   leftKeys: 1401000061000000
   rightKeys: 1301000064000000
+  uButton: {fileID: 970043596}
+  dButton: {fileID: 459405683}
+  lButton: {fileID: 1703650379}
+  rButton: {fileID: 1521330460}
 --- !u!1 &1278480582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,7 +1955,7 @@ GameObject:
   - component: {fileID: 1521330461}
   - component: {fileID: 1521330460}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1991,7 +1999,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2351,7 +2359,7 @@ GameObject:
   - component: {fileID: 1703650380}
   - component: {fileID: 1703650379}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2395,7 +2403,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
