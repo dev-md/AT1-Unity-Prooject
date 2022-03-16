@@ -458,7 +458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 451873535}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Button list
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,7 +750,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.5235849, g: 0.9728712, b: 1, a: 1}
   m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 1157219710}
   - component: {fileID: 1157219709}
   m_Layer: 5
-  m_Name: Canvas_UI-HUD
+  m_Name: Button Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -134,56 +134,34 @@ public class Player : MonoBehaviour
     {
         //Set vars that is needed.
         List<Node> listParentChild = new List<Node>();
-        List<Node> listClose = new List<Node>(); //The nodes list.
 
         //What direction is the closest nodes.
         Dictionary<string, Node> whereNode = new Dictionary<string, Node>();
+
         //Checking closest nodess
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10f);
         Node whichNode;
 
 
         // lists all nodes and adds them to a list
         foreach (Node node in GameManager.Instance.Nodes)
         {
-            listParentChild.Add(node);
-        }
-
-        //Lists all in a sphere collider.
-        foreach (Collider hitCol in hitColliders)
-        {
-            if (hitCol.transform.name.Contains("Node")) //If this hit is named node.
+            if (node != CurrentNode)
             {
-                foreach (Node node in listParentChild) //List thru all of the nodes
-                {
-                    if (node.name == hitCol.transform.name) //If the name is the same. for both.
-                    {
-                        //Debug.Log(node.name + " and " + hitCol.transform.name);
-                        //Addes node to the list.
-                        listClose.Add(node);
-                    }
-                }
+                listParentChild.Add(node);
             }
         }
 
-        //Removes the players current node.
-        foreach (Node node in listParentChild)
-        {
-            if (node == CurrentNode)
-            {
-                listClose.Remove(node);
-            }
-        }
         //Clearing the dict list, to avoid errors.
         foreach (string x in new List<string> { "u", "d", "l", "r" })
         {
             whereNode[x] = CurrentNode;
         }
+
         //For each direction
         foreach (string x in new List<string> { "u", "d", "l", "r" })
         {
             //and for each node
-            foreach (Node node in listClose)
+            foreach (Node node in listParentChild)
             {
                 //Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue,3f);
                 //Case statement the direction and see if the node is in the direction.
