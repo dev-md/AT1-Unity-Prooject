@@ -1589,10 +1589,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0598469efdf71994fb8dd489a094a3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upKeys: 1101000077000000
-  downKeys: 1201000073000000
-  leftKeys: 1401000061000000
-  rightKeys: 1301000064000000
+  upKeys: 11010000770000004d010000
+  downKeys: 12010000730000004a010000
+  leftKeys: 14010000610000004c010000
+  rightKeys: 13010000640000004b010000
   uButton: {fileID: 970043596}
   dButton: {fileID: 459405683}
   lButton: {fileID: 1703650379}

@@ -18,11 +18,13 @@ public class Player : MonoBehaviour
     //My added Vairables 
     private string moveDirNode;
 
-    public Button uButton; //the list of buttons, Note: need to find better way to do this.
+    //the list of buttons, Note: need to find better way to do this.
+    public Button uButton; 
     public Button dButton;
     public Button lButton;
     public Button rButton;
     Dictionary<string, Button> listButtons = new Dictionary<string, Button>();
+    private Node NodeMove;
     //the list of buttons with the direction of them
 
     // Start is called before the first frame update
@@ -60,8 +62,16 @@ public class Player : MonoBehaviour
             {
                 //Debug.Log("HIT");
                 //Changes the colour of the button and finds the node of the direction.
-                ChangeButtonColour(listButtons[moveDirNode], Color.green);
-                MoveToNode(FindClosest());
+                NodeMove = FindClosest();
+                if(NodeMove != CurrentNode)
+                {
+                    MoveToNode(FindClosest());
+                    ChangeButtonColour(listButtons[moveDirNode], Color.green);
+                }
+                else
+                {
+                    ChangeButtonColour(listButtons[moveDirNode], Color.red);
+                }
                 moveDirNode = null; //Finish with the direction.
             }
         }
@@ -76,6 +86,7 @@ public class Player : MonoBehaviour
                     //change it to red.
                     ChangeButtonColour(listButtons[moveDirNode], Color.red);
                 }
+                NodeMove = null;
                 moveDirNode = null; // Changes back to nonething.
             }
 
@@ -152,63 +163,62 @@ public class Player : MonoBehaviour
         }
 
         //Clearing the dict list, to avoid errors.
-        foreach (string x in new List<string> { "u", "d", "l", "r" })
-        {
-            whereNode[x] = CurrentNode;
-        }
+        //THIS NEEDS TO BE DONE.
+        //foreach (string x in new List<string> { "u", "d", "l", "r" })
+        //{
+        //    whereNode[x] = CurrentNode;
+        //}
+        whereNode[moveDirNode] = CurrentNode;
 
-        //For each direction
-        foreach (string x in new List<string> { "u", "d", "l", "r" })
+
+        foreach (Node node in listParentChild)
         {
-            //and for each node
-            foreach (Node node in listParentChild)
+            //Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue,3f);
+
+            //Case statement the direction and see if the node is in the direction.
+            switch (moveDirNode)
             {
-                //Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue,3f);
-                //Case statement the direction and see if the node is in the direction.
-                switch (x)
-                {
-                    case "u":
-                        //Ray cast to see if the node is in the direction
-                        if(Physics.Raycast(transform.position, transform.forward * 10f, out RaycastHit otherU, 12f))
+                case "u":
+                    //Ray cast to see if the node is in the direction
+                    if(Physics.Raycast(transform.position, transform.forward * 10f, out RaycastHit otherU, 12f))
+                    {
+                        //if the nodes are the same from the list and the raycast.
+                        if(otherU.transform.name == node.name)
                         {
-                            //if the nodes are the same from the list and the raycast.
-                            if(otherU.transform.name == node.name)
-                            {
-                                //Add to direction.
-                                whereNode["u"] = node;
-                            }
+                            //Add to direction.
+                            whereNode["u"] = node;
                         }
-                        break;
-                    //repeat This for each direciton.
-                    case "d":
-                        if (Physics.Raycast(transform.position, transform.forward * -10f, out RaycastHit otherD, 12f))
+                    }
+                    break;
+                //repeat This for each direciton.
+                case "d":
+                    if (Physics.Raycast(transform.position, transform.forward * -10f, out RaycastHit otherD, 12f))
+                    {
+                        if (otherD.transform.name == node.name)
                         {
-                            if (otherD.transform.name == node.name)
-                            {
-                                whereNode["d"] = node;
-                            }
+                            whereNode["d"] = node;
                         }
-                        break;
-                    case "l":
+                    }
+                    break;
+                case "l":
 
-                        if (Physics.Raycast(transform.position, transform.right * -10f, out RaycastHit otherL, 12f))
+                    if (Physics.Raycast(transform.position, transform.right * -10f, out RaycastHit otherL, 12f))
+                    {
+                        if (otherL.transform.name == node.name)
                         {
-                            if (otherL.transform.name == node.name)
-                            {
-                                whereNode["l"] = node;
-                            }
+                            whereNode["l"] = node;
                         }
-                        break;
-                    case "r":
-                        if (Physics.Raycast(transform.position, transform.right * 10f, out RaycastHit otherR, 12f))
+                    }
+                    break;
+                case "r":
+                    if (Physics.Raycast(transform.position, transform.right * 10f, out RaycastHit otherR, 12f))
+                    {
+                        if (otherR.transform.name == node.name)
                         {
-                            if (otherR.transform.name == node.name)
-                            {
-                                whereNode["r"] = node;
-                            }
+                            whereNode["r"] = node;
                         }
-                        break;
-                }
+                    }
+                    break;
             }
         }
 
@@ -218,13 +228,16 @@ public class Player : MonoBehaviour
         //    Debug.Log(i);
         //}
         ////listClose.Add(CurrentNode.Children);
+        
 
         //From the event that is called.
         //set the var from the list.
         whichNode = whereNode[moveDirNode];
+
         //Final return of the node.
         return whichNode;
     }
+
 
     //Listening on the event.
     private string InputChecker_ConfrimDirInput(string dirInput)
@@ -233,6 +246,6 @@ public class Player : MonoBehaviour
         moveDirNode = dirInput;
         //Debug.Log(dirInput);
 
-        return dirInput; //Doesnt retrun anything.
+        return dirInput; //Doesnt return anything, because of direct changes.
     }
 }
