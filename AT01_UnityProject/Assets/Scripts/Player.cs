@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
                 button.GetComponent<Image>().color = Color.green;
             }
         }
-        button.GetComponent<Image>().color = Color.white;
+        button.GetComponent<Image>().color = Color.grey;
     }
 
 
