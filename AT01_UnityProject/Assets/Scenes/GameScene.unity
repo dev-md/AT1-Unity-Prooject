@@ -1606,6 +1606,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+<<<<<<< HEAD
+=======
+--- !u!114 &1220234479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220234472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0598469efdf71994fb8dd489a094a3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKeys: 11010000770000004d010000
+  downKeys: 12010000730000004a010000
+  leftKeys: 14010000610000004c010000
+  rightKeys: 13010000640000004b010000
+  uButton: {fileID: 970043596}
+  dButton: {fileID: 459405683}
+  lButton: {fileID: 1703650379}
+  rButton: {fileID: 1521330460}
+>>>>>>> parent of b2fbbd5 (-I give up)
 --- !u!1 &1278480582
 GameObject:
   m_ObjectHideFlags: 0
