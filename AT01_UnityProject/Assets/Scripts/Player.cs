@@ -16,37 +16,16 @@ public class Player : MonoBehaviour
     private Vector3 currentDir;
 
     //My added Vairables 
-    private string moveDirNode;
-
-    //the list of buttons, Note: need to find better way to do this.
-    private Button uButton;
-    private Button dButton;
-    private Button lButton;
-    private Button rButton;
-    Dictionary<string, Button> listButtons = new Dictionary<string, Button>();
+    public string moveDirNode { get ; private set; }
     private Node NodeMove;
-    //the list of buttons with the direction of them
+    public bool publicmoving { get; private set; }
+    public bool publicNodeMove { get; private set; }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        #region
-        // Adds the Buttons
-        uButton = InputChecker.inputInstance.publicUButton;
-        dButton = InputChecker.inputInstance.publicDButton;
-        lButton = InputChecker.inputInstance.publicLButton;
-        rButton = InputChecker.inputInstance.publicRButton;
-        #endregion
-
         moveDirNode = null; //starting in no direction
-
-        #region
-        // Adds the Buttons with the direction.
-        listButtons.Add("u", uButton);
-        listButtons.Add("d", dButton);
-        listButtons.Add("l", lButton);
-        listButtons.Add("r", rButton);
-        #endregion
 
         //Input Event to find what direction the player hit
         InputChecker.ConfrimDirInput += InputChecker_ConfrimDirInput;
@@ -65,21 +44,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        publicmoving = moving;
+
         if (moving == false)
         {
             if (moveDirNode != null) //If it is a direction
             {
                 //Debug.Log("HIT");
-                //Changes the colour of the button and finds the node of the direction.
                 NodeMove = FindClosest();
-                if(NodeMove != CurrentNode)
+                if (NodeMove != CurrentNode)
                 {
-                    MoveToNode(FindClosest());
-                    ChangeButtonColour(listButtons[moveDirNode], Color.green);
-                }
-                else
-                {
-                    ChangeButtonColour(listButtons[moveDirNode], Color.red);
+                    MoveToNode(NodeMove);
                 }
                 moveDirNode = null; //Finish with the direction.
             }
@@ -89,12 +64,6 @@ public class Player : MonoBehaviour
 
             if (moveDirNode != null) //if does have a direction and is not moving
             {
-                //if the colour is not green
-                if(listButtons[moveDirNode].GetComponent<Image>().color != Color.green)
-                {
-                    //change it to red.
-                    ChangeButtonColour(listButtons[moveDirNode], Color.red);
-                }
                 NodeMove = null;
                 moveDirNode = null; // Changes back to nonething.
             }
@@ -107,6 +76,7 @@ public class Player : MonoBehaviour
             {
                 moving = false;
 
+                //Old code.
                 //CurrentNode.tag = "Untagged"; //Player is not on the node
                 //TargetNode.tag = "Player_Node"; //Player is moving to the node
 
@@ -114,31 +84,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-    //Implement mouse interaction method here
-
-    //The Colour changing method.
-    private void ChangeButtonColour(Button button, Color colour)
-    {
-        button.GetComponent<Image>().color = colour;
-        if(colour == Color.green) StartCoroutine(ColourTimer(button, 2.4f, colour));
-        if(colour == Color.red) StartCoroutine(ColourTimer(button, 0.1f, colour));
-    }
-
-    //My Colour timer
-    IEnumerator ColourTimer(Button button, float time, Color colour)
-    {
-        yield return new WaitForSeconds(time);
-        if (colour == Color.red)
-        {
-            if(button.GetComponent<Image>().color == Color.green)
-            {
-                button.GetComponent<Image>().color = Color.green;
-            }
-        }
-        button.GetComponent<Image>().color = Color.white;
-    }
-
 
     /// <summary>
     /// Sets the players target node and current directon to the specified node.

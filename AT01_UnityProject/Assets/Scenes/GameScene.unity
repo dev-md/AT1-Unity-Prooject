@@ -457,6 +457,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451873535}
+  - component: {fileID: 451873536}
+  - component: {fileID: 451873537}
   m_Layer: 5
   m_Name: Button list
   m_TagString: Untagged
@@ -487,6 +489,38 @@ RectTransform:
   m_AnchoredPosition: {x: -25, y: 25}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &451873536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451873534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93290cb4d9b1e674d905af11d7863870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &451873537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451873534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0598469efdf71994fb8dd489a094a3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKeys: 11010000770000004d010000
+  downKeys: 12010000730000004b010000
+  leftKeys: 14010000610000004a010000
+  rightKeys: 13010000640000004c010000
+  uButton: {fileID: 970043596}
+  dButton: {fileID: 459405683}
+  lButton: {fileID: 1703650379}
+  rButton: {fileID: 1521330460}
 --- !u!1 &459405681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1494,6 @@ GameObject:
   - component: {fileID: 1220234474}
   - component: {fileID: 1220234473}
   - component: {fileID: 1220234478}
-  - component: {fileID: 1220234479}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1573,26 +1606,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1220234479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220234472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0598469efdf71994fb8dd489a094a3bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upKeys: 11010000770000004d010000
-  downKeys: 12010000730000004b010000
-  leftKeys: 14010000610000004a010000
-  rightKeys: 13010000640000004c010000
-  uButton: {fileID: 970043596}
-  dButton: {fileID: 459405683}
-  lButton: {fileID: 1703650379}
-  rButton: {fileID: 1521330460}
 --- !u!1 &1278480582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1617,6 @@ GameObject:
   - component: {fileID: 1278480583}
   - component: {fileID: 1278480584}
   - component: {fileID: 1278480585}
-  - component: {fileID: 1278480586}
   m_Layer: 0
   m_Name: RootNode
   m_TagString: Untagged
@@ -1694,19 +1706,6 @@ MonoBehaviour:
   - {fileID: 355137587}
   - {fileID: 268955034}
   - {fileID: 1573181747}
---- !u!135 &1278480586
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278480582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1389258052
 GameObject:
   m_ObjectHideFlags: 0
