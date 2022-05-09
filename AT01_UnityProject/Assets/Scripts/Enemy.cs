@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("Movement speed modifier.")]
     [SerializeField] private float speed = 3;
     private Node currentNode;
+    private Node targetNode;
     private Vector3 currentDir;
     private bool playerCaught = false;
 
@@ -35,14 +36,33 @@ public class Enemy : MonoBehaviour
                 else
                 {
                     //currentNode = GameManager.Instance.Nodes[5];
-                    currentNode = DFS(); // My moving method
-                    currentDir = currentNode.transform.position - transform.position;
-                    currentDir = currentDir.normalized;
+
+                    targetNode = DFS(); // My moving method
+
+                    if((targetNode != currentNode) && (targetNode != null))
+                    {
+                        currentNode = targetNode;
+                        currentDir = currentNode.transform.position - transform.position;
+                        currentDir = currentDir.normalized;
+                    }
+                    else if((GameManager.Instance.Player.TargetNode != null) 
+                    && 
+                    (GameManager.Instance.Player.TargetNode 
+                    != GameManager.Instance.Player.CurrentNode))
+                    {
+                        currentNode = GameManager.Instance.Player.TargetNode;
+                        currentDir = currentNode.transform.position - transform.position;
+                        currentDir = currentDir.normalized;
+                    }
                 }
             }
             else
             {
                 Debug.LogWarning($"{name} - No current node");
+
+                //Trying to assgin a currunt node.
+                targetNode = DFS();
+                currentNode = targetNode;
             }
 
             Debug.DrawRay(transform.position, currentDir, Color.cyan);
@@ -85,7 +105,7 @@ public class Enemy : MonoBehaviour
         visitedlist.Add(GameManager.Instance.Nodes[0]);
 
         //Just checking to see if they are on the root node.
-        if (GameManager.Instance.Nodes[0].tag == "Player_Node")
+        if (GameManager.Instance.Nodes[0] == GameManager.Instance.Player.CurrentNode)
         {
             return visitedlist[0];
         }
