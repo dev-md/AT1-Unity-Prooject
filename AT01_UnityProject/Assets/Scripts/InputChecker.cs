@@ -8,26 +8,42 @@ public class InputChecker : MonoBehaviour
     #region
     private static InputChecker _instance; // Getting the instance of the input checker
     private static InputChecker Instance;
+    public static InputChecker inputInstance { get; private set; }
     #endregion
 
     //
     public delegate string InputConfrim(string dirInput); //Input event along with a string
     public static event InputConfrim ConfrimDirInput; // confriming event
 
-    public List<KeyCode> upKeys; // List of all of the possiable keys presses
-    public List<KeyCode> downKeys;
-    public List<KeyCode> leftKeys;
-    public List<KeyCode> rightKeys;
+    #region
+    [SerializeField] private List<KeyCode> upKeys; // List of all of the possiable keys presses
+    [SerializeField] private List<KeyCode> downKeys;
+    [SerializeField] private List<KeyCode> leftKeys;
+    [SerializeField] private List<KeyCode> rightKeys;
     Dictionary<string, List<KeyCode>> listInputs = new Dictionary<string, List<KeyCode>>();
     //A dictinonary of the direction with the key
 
-    public Button uButton; //The UI Buttons that will be used
-    public Button dButton;
-    public Button lButton;
-    public Button rButton;
+    [SerializeField] private Button uButton; //The UI Buttons that will be used
+    [SerializeField] private Button dButton;
+    [SerializeField] private Button lButton;
+    [SerializeField] private Button rButton;
+
+    public Button publicUButton { get; private set; }
+    public Button publicDButton { get; private set; }
+    public Button publicLButton { get; private set; }
+    public Button publicRButton { get; private set; }
+    #endregion
 
     private void Awake()
     {
+        inputInstance = this;
+
+        #region
+        publicUButton = uButton;
+        publicDButton = dButton;
+        publicLButton = lButton;
+        publicRButton = rButton;
+
         // A lazy way of adding every key to a direction
         listInputs.Add("u", upKeys); 
         listInputs.Add("d", downKeys);
@@ -39,6 +55,7 @@ public class InputChecker : MonoBehaviour
         dButton.GetComponent<Button>().onClick.AddListener(DownButtonClick);
         lButton.GetComponent<Button>().onClick.AddListener(LeftButtonClick);
         rButton.GetComponent<Button>().onClick.AddListener(RightButtonClick);
+        #endregion
 
     }
 

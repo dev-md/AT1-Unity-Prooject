@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     }
 
     //Implement DFS algorithm method here
-    public Node DFS() // My DFS algrothim.
+    private Node DFS() // My DFS algrothim.
     {
         //creating stack and list
         Stack stack = new Stack();
@@ -83,19 +83,27 @@ public class Enemy : MonoBehaviour
 
         // Adding the root node to the stack and list
         visitedlist.Add(GameManager.Instance.Nodes[0]);
+
+        //Just checking to see if they are on the root node.
+        if (GameManager.Instance.Nodes[0].tag == "Player_Node")
+        {
+            return visitedlist[0];
+        }
+
         stack.Push(GameManager.Instance.Nodes[0]);
 
-        while (stack.Count > 0) //loop while there is something in the stack
+        //loop while there is something in the stack
+        while (stack.Count > 0) 
         {
             Node node = (Node)stack.Pop();
-            //visitedlist.Add(node);
+            //visitedlist.Add(node); // mark the node into the visted list.
             //Debug.Log("Checking " + node.name);
             foreach (Node child in node.Children)
             {
                 if (visitedlist.Contains(child) == false) //&& stack.Contains(child) == false)
                 {
                     //Debug.Log("Checking " + node.name + " and child " + child.name);
-                    if (child.tag == "Player_Node") //Checking the tag of the node.
+                    if (child == GameManager.Instance.Player.CurrentNode) //Checking the node with player curr.
                     {
                         //Debug.Log(child);
                         return child; // This is where the player is.
@@ -108,6 +116,6 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        return null; // if they are on the root node.
+        return null; // couldnt find any player.
     }
 }

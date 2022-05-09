@@ -19,10 +19,10 @@ public class Player : MonoBehaviour
     private string moveDirNode;
 
     //the list of buttons, Note: need to find better way to do this.
-    public Button uButton; 
-    public Button dButton;
-    public Button lButton;
-    public Button rButton;
+    private Button uButton;
+    private Button dButton;
+    private Button lButton;
+    private Button rButton;
     Dictionary<string, Button> listButtons = new Dictionary<string, Button>();
     private Node NodeMove;
     //the list of buttons with the direction of them
@@ -30,14 +30,23 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        #region
+        // Adds the Buttons
+        uButton = InputChecker.inputInstance.publicUButton;
+        dButton = InputChecker.inputInstance.publicDButton;
+        lButton = InputChecker.inputInstance.publicLButton;
+        rButton = InputChecker.inputInstance.publicRButton;
+        #endregion
+
         moveDirNode = null; //starting in no direction
 
+        #region
         // Adds the Buttons with the direction.
         listButtons.Add("u", uButton);
         listButtons.Add("d", dButton);
         listButtons.Add("l", lButton);
         listButtons.Add("r", rButton);
+        #endregion
 
         //Input Event to find what direction the player hit
         InputChecker.ConfrimDirInput += InputChecker_ConfrimDirInput;
@@ -47,7 +56,7 @@ public class Player : MonoBehaviour
             if (node.Parents.Length > 2 && node.Children.Length == 0)
             {
                 CurrentNode = node;
-                CurrentNode.tag = "Player_Node"; // The Node that the player is on.
+                //CurrentNode.tag = "Player_Node"; // The Node that the player is on.
                 break;
             }
         }
@@ -97,6 +106,10 @@ public class Player : MonoBehaviour
             else
             {
                 moving = false;
+
+                //CurrentNode.tag = "Untagged"; //Player is not on the node
+                //TargetNode.tag = "Player_Node"; //Player is moving to the node
+
                 CurrentNode = TargetNode;
             }
         }
@@ -108,14 +121,21 @@ public class Player : MonoBehaviour
     private void ChangeButtonColour(Button button, Color colour)
     {
         button.GetComponent<Image>().color = colour;
-        if(colour == Color.green) StartCoroutine(ColourTimer(button, 2.4f));
-        if(colour == Color.red) StartCoroutine(ColourTimer(button, 0.5f));
+        if(colour == Color.green) StartCoroutine(ColourTimer(button, 2.4f, colour));
+        if(colour == Color.red) StartCoroutine(ColourTimer(button, 0.1f, colour));
     }
 
     //My Colour timer
-    IEnumerator ColourTimer(Button button, float time)
+    IEnumerator ColourTimer(Button button, float time, Color colour)
     {
         yield return new WaitForSeconds(time);
+        if (colour == Color.red)
+        {
+            if(button.GetComponent<Image>().color == Color.green)
+            {
+                button.GetComponent<Image>().color = Color.green;
+            }
+        }
         button.GetComponent<Image>().color = Color.white;
     }
 
@@ -132,8 +152,6 @@ public class Player : MonoBehaviour
         if (moving == false)
         {
             TargetNode = node;
-            CurrentNode.tag = "Untagged"; //Player is not on the node
-            TargetNode.tag = "Player_Node"; //Player is moving to the node
             currentDir = TargetNode.transform.position - transform.position;
             currentDir = currentDir.normalized;
             moving = true;

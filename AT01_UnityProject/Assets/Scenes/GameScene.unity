@@ -704,11 +704,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parents:
-  - {fileID: 1573181747}
   - {fileID: 268955034}
+  - {fileID: 1573181747}
   children:
-  - {fileID: 1853686109}
   - {fileID: 1504686828}
+  - {fileID: 1853686109}
 --- !u!135 &700098639
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1481,10 +1481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  uButton: {fileID: 970043596}
-  dButton: {fileID: 459405683}
-  lButton: {fileID: 1703650379}
-  rButton: {fileID: 1521330460}
 --- !u!135 &1220234474
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1695,8 +1691,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parents: []
   children:
-  - {fileID: 268955034}
   - {fileID: 355137587}
+  - {fileID: 268955034}
   - {fileID: 1573181747}
 --- !u!135 &1278480586
 SphereCollider:
@@ -1808,12 +1804,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parents:
+  - {fileID: 355137587}
   - {fileID: 268955034}
   - {fileID: 1573181747}
-  - {fileID: 355137587}
   children:
-  - {fileID: 1504686828}
   - {fileID: 836551682}
+  - {fileID: 1504686828}
   - {fileID: 1853686109}
 --- !u!135 &1389258056
 SphereCollider:
@@ -1925,8 +1921,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parents:
-  - {fileID: 1389258055}
   - {fileID: 1622374381}
+  - {fileID: 1389258055}
   - {fileID: 700098638}
   children: []
 --- !u!135 &1504686829
@@ -2563,8 +2559,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parents:
-  - {fileID: 700098638}
   - {fileID: 1389258055}
+  - {fileID: 700098638}
   children: []
 --- !u!135 &1853686110
 SphereCollider:
