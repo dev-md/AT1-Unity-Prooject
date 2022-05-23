@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
 
                     targetNode = DFS(); // My moving method
 
+                    //Main movement
                     if((targetNode != currentNode) && (targetNode != null))
                     {
                         currentNode = targetNode;
@@ -111,7 +112,6 @@ public class Enemy : MonoBehaviour
         }
 
         stack.Push(GameManager.Instance.Nodes[0]);
-
         //loop while there is something in the stack
         while (stack.Count > 0) 
         {

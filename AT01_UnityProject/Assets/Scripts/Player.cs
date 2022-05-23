@@ -239,13 +239,6 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-
-        //Test what is the things.
-        //foreach (KeyValuePair<string, Node> i in whereNode)
-        //{
-        //    Debug.Log(i);
-        //}
-        ////listClose.Add(CurrentNode.Children);
         
 
         //From the event that is called.
@@ -262,7 +255,6 @@ public class Player : MonoBehaviour
     {
         //Changes the global direction var.
         moveDirNode = dirInput;
-        //Debug.Log(dirInput);
 
         return dirInput; //Doesnt return anything, because of direct changes.
     }
