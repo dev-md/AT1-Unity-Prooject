@@ -85,6 +85,34 @@ public class Player : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+=======
+    //Implement mouse interaction method here
+
+    //The Colour changing method.
+    private void ChangeButtonColour(Button button, Color colour)
+    {
+        button.GetComponent<Image>().color = colour;
+        if(colour == Color.green) StartCoroutine(ColourTimer(button, 2.4f, colour));
+        if(colour == Color.red) StartCoroutine(ColourTimer(button, 0.1f, colour));
+    }
+
+    //My Colour timer
+    IEnumerator ColourTimer(Button button, float time, Color colour)
+    {
+        yield return new WaitForSeconds(time);
+        if (colour == Color.red)
+        {
+            if(button.GetComponent<Image>().color == Color.green)
+            {
+                button.GetComponent<Image>().color = Color.green;
+            }
+        }
+        button.GetComponent<Image>().color = Color.grey;
+    }
+
+
+>>>>>>> Test
     /// <summary>
     /// Sets the players target node and current directon to the specified node.
     /// </summary>
@@ -184,13 +212,6 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-
-        //Test what is the things.
-        //foreach (KeyValuePair<string, Node> i in whereNode)
-        //{
-        //    Debug.Log(i);
-        //}
-        ////listClose.Add(CurrentNode.Children);
         
 
         //From the event that is called.
@@ -207,7 +228,6 @@ public class Player : MonoBehaviour
     {
         //Changes the global direction var.
         moveDirNode = dirInput;
-        //Debug.Log(dirInput);
 
         return dirInput; //Doesnt return anything, because of direct changes.
     }
