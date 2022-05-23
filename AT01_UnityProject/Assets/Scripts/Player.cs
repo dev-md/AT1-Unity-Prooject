@@ -3,33 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class Player : MonoBehaviour
 {
     //Define delegate types and events here
-
     public Node CurrentNode { get; private set; }
     public Node TargetNode { get; private set; }
-
     [SerializeField] private float speed = 4;
     private bool moving = false;
     private Vector3 currentDir;
-
     //My added Vairables 
-    public string moveDirNode { get ; private set; }
+    private string moveDirNode;
+    //the list of buttons, Note: need to find better way to do this.
+    private Button uButton;
+    private Button dButton;
+    private Button lButton;
+    private Button rButton;
+    Dictionary<string, Button> listButtons = new Dictionary<string, Button>();
     private Node NodeMove;
-    public bool publicmoving { get; private set; }
-    public bool publicNodeMove { get; private set; }
-
-
+    //the list of buttons with the direction of them
     // Start is called before the first frame update
     void Start()
     {
+        #region
+        // Adds the Buttons
+        uButton = InputChecker.inputInstance.publicUButton;
+        dButton = InputChecker.inputInstance.publicDButton;
+        lButton = InputChecker.inputInstance.publicLButton;
+        rButton = InputChecker.inputInstance.publicRButton;
+        #endregion
         moveDirNode = null; //starting in no direction
-
+        #region
+        // Adds the Buttons with the direction.
+        listButtons.Add("u", uButton);
+        listButtons.Add("d", dButton);
+        listButtons.Add("l", lButton);
+        listButtons.Add("r", rButton);
+        #endregion
         //Input Event to find what direction the player hit
         InputChecker.ConfrimDirInput += InputChecker_ConfrimDirInput;
-
         foreach (Node node in GameManager.Instance.Nodes)
         {
             if (node.Parents.Length > 2 && node.Children.Length == 0)
@@ -40,34 +51,41 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     // Update is called once per frame
     void Update()
     {
-        publicmoving = moving;
-
         if (moving == false)
         {
             if (moveDirNode != null) //If it is a direction
             {
                 //Debug.Log("HIT");
+                //Changes the colour of the button and finds the node of the direction.
                 NodeMove = FindClosest();
                 if (NodeMove != CurrentNode)
                 {
-                    MoveToNode(NodeMove);
+                    MoveToNode(FindClosest());
+                    ChangeButtonColour(listButtons[moveDirNode], Color.green);
+                }
+                else
+                {
+                    ChangeButtonColour(listButtons[moveDirNode], Color.red);
                 }
                 moveDirNode = null; //Finish with the direction.
             }
         }
         else
         {
-
             if (moveDirNode != null) //if does have a direction and is not moving
             {
+                //if the colour is not green
+                if (listButtons[moveDirNode].GetComponent<Image>().color != Color.green)
+                {
+                    //change it to red.
+                    ChangeButtonColour(listButtons[moveDirNode], Color.red);
+                }
                 NodeMove = null;
                 moveDirNode = null; // Changes back to nonething.
             }
-
             if (Vector3.Distance(transform.position, TargetNode.transform.position) > 0.25f)
             {
                 transform.Translate(currentDir * speed * Time.deltaTime);
@@ -75,18 +93,14 @@ public class Player : MonoBehaviour
             else
             {
                 moving = false;
-
-                //Old code.
                 //CurrentNode.tag = "Untagged"; //Player is not on the node
                 //TargetNode.tag = "Player_Node"; //Player is moving to the node
-
                 CurrentNode = TargetNode;
             }
         }
     }
 
-<<<<<<< HEAD
-=======
+
     //Implement mouse interaction method here
 
     //The Colour changing method.
@@ -111,8 +125,6 @@ public class Player : MonoBehaviour
         button.GetComponent<Image>().color = Color.grey;
     }
 
-
->>>>>>> Test
     /// <summary>
     /// Sets the players target node and current directon to the specified node.
     /// </summary>

@@ -1606,8 +1606,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
-<<<<<<< HEAD
-=======
 --- !u!114 &1220234479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +1626,6 @@ MonoBehaviour:
   dButton: {fileID: 459405683}
   lButton: {fileID: 1703650379}
   rButton: {fileID: 1521330460}
->>>>>>> parent of b2fbbd5 (-I give up)
 --- !u!1 &1278480582
 GameObject:
   m_ObjectHideFlags: 0
