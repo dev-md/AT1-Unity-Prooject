@@ -318,9 +318,9 @@ MonoBehaviour:
   parents:
   - {fileID: 1278480585}
   children:
-  - {fileID: 1389258055}
   - {fileID: 1622374381}
   - {fileID: 700098638}
+  - {fileID: 1389258055}
 --- !u!135 &268955035
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2164,8 +2164,8 @@ MonoBehaviour:
   parents:
   - {fileID: 1278480585}
   children:
-  - {fileID: 700098638}
   - {fileID: 1389258055}
+  - {fileID: 700098638}
 --- !u!135 &1573181748
 SphereCollider:
   m_ObjectHideFlags: 0

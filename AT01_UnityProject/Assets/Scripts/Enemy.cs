@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -116,13 +117,15 @@ public class Enemy : MonoBehaviour
         while (stack.Count > 0) 
         {
             Node node = (Node)stack.Pop();
-            //visitedlist.Add(node); // mark the node into the visted list.
-            //Debug.Log("Checking " + node.name);
+            visitedlist.Add(node); // mark the node into the visted list.
+            List<Node> stacklist = new List<Node>();
+            //Debug.Log("Main Checking " + node.name);
             foreach (Node child in node.Children)
             {
                 if (visitedlist.Contains(child) == false) //&& stack.Contains(child) == false)
                 {
                     //Debug.Log("Checking " + node.name + " and child " + child.name);
+                    
                     if (child == GameManager.Instance.Player.CurrentNode) //Checking the node with player curr.
                     {
                         //Debug.Log(child);
@@ -131,9 +134,18 @@ public class Enemy : MonoBehaviour
 
                     //If they didnt find the player node, adds them to the visted list.
                     visitedlist.Add(child);
-                    stack.Push(child);
+                    stacklist.Add(child);
+                    //stack.Push(child);
                 }
             }
+
+            //We want the Reverse of the list order.
+            stacklist.Reverse();
+            foreach (Node child in stacklist)
+            {
+                stack.Push(child);
+            }
+
         }
 
         return null; // couldnt find any player.
