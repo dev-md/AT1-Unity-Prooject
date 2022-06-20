@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         #endregion
         //Input Event to find what direction the player hit
         InputChecker.ConfrimDirInput += InputChecker_ConfrimDirInput;
+
         foreach (Node node in GameManager.Instance.Nodes)
         {
             if (node.Parents.Length > 2 && node.Children.Length == 0)

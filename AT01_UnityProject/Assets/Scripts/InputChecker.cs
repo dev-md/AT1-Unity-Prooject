@@ -16,13 +16,6 @@ public class InputChecker : MonoBehaviour
     public static event InputConfrim ConfrimDirInput; // confriming event
 
     #region
-    [SerializeField] private List<KeyCode> upKeys; // List of all of the possiable keys presses
-    [SerializeField] private List<KeyCode> downKeys;
-    [SerializeField] private List<KeyCode> leftKeys;
-    [SerializeField] private List<KeyCode> rightKeys;
-    Dictionary<string, List<KeyCode>> listInputs = new Dictionary<string, List<KeyCode>>();
-    //A dictinonary of the direction with the key
-
     [SerializeField] private Button uButton; //The UI Buttons that will be used
     [SerializeField] private Button dButton;
     [SerializeField] private Button lButton;
@@ -34,6 +27,9 @@ public class InputChecker : MonoBehaviour
     public Button publicRButton { get; private set; }
     #endregion
 
+    private float dirupdown;
+    private float dirrightleft;
+
     private void Awake()
     {
         inputInstance = this;
@@ -44,11 +40,6 @@ public class InputChecker : MonoBehaviour
         publicLButton = lButton;
         publicRButton = rButton;
 
-        // A lazy way of adding every key to a direction
-        listInputs.Add("u", upKeys); 
-        listInputs.Add("d", downKeys);
-        listInputs.Add("l", leftKeys);
-        listInputs.Add("r", rightKeys);
 
         // A Super lazy way of checking to see if the Buttons are being pressed
         uButton.GetComponent<Button>().onClick.AddListener(UpButtonClick);
@@ -61,17 +52,30 @@ public class InputChecker : MonoBehaviour
 
     private void Update()
     {
-        foreach(KeyValuePair<string, List<KeyCode>> x in listInputs) // getting the list into X
+        dirupdown = Input.GetAxis("Vertical");
+        dirrightleft = Input.GetAxis("Horizontal");
+
+        if (ConfrimDirInput != null)
         {
-            foreach(KeyCode y in x.Value) //getting the key presses into y
+            //ConfrimDirInput.Invoke(Key);
+            if (dirupdown > 0)
             {
-                if (Input.GetKeyDown(y))
-                {
-                    if (ConfrimDirInput != null) ConfrimDirInput.Invoke(x.Key);
-                    // Calls Event with the direction that is done by.
-                }
+                ConfrimDirInput.Invoke("u");
+            }
+            else if (dirupdown < 0)
+            {
+                ConfrimDirInput.Invoke("d");
+            }
+            else if (dirrightleft < 0)
+            {
+                ConfrimDirInput.Invoke("l");
+            }
+            else if (dirrightleft > 0)
+            {
+                ConfrimDirInput.Invoke("r");
             }
         }
+        
     }
 
     //A super duper lazy way of creating a direction method,
